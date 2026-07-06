@@ -13,6 +13,7 @@ import seaborn as sns
 
 
 RANDOM_SEED = 42
+FIGSIZE = (10.5, 6.2)
 
 
 def create_state_problem_chart(output_path: Path) -> None:
@@ -23,7 +24,7 @@ def create_state_problem_chart(output_path: Path) -> None:
     x = np.arange(len(states))
     width = 0.34
 
-    fig, ax = plt.subplots(figsize=(10.5, 6.2))
+    fig, ax = plt.subplots(figsize=FIGSIZE)
     ax.bar(x - width / 2, total_share, width, label="Total Data", color="#f59e0b")
     ax.bar(x + width / 2, early_share, width, label="Early Water Loss = 1", color="#1d4ed8")
     ax.set_title("Percentage of Early Water Loss by State", fontsize=16, weight="bold")
@@ -51,11 +52,11 @@ def create_state_problem_chart(output_path: Path) -> None:
 def create_shap_strength_chart(output_path: Path) -> None:
     """Create a SHAP-style beeswarm plot with generic feature labels."""
     rng = np.random.default_rng(RANDOM_SEED)
-    features = [f"Feature {letter}" for letter in list("ABCDEFGHIJKLMNOPQRST")]
-    spreads = np.array([3.0, 2.4, 2.0, 1.7, 1.45, 1.2, 1.05, 0.95, 0.85, 0.78, 0.70, 0.62, 0.55, 0.50, 0.45, 0.40, 0.35, 0.30, 0.27, 0.24])
-    signs = np.array([-1, 1, -1, 1, -1, 1, -1, 0, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 0, 1])
+    features = [f"Feature {letter}" for letter in list("ABCDEFGHIJ")]
+    spreads = np.array([3.0, 2.4, 2.0, 1.7, 1.45, 1.2, 1.05, 0.95, 0.85, 0.78])
+    signs = np.array([-1, 1, -1, 1, -1, 1, -1, 0, 1, -1])
 
-    fig, ax = plt.subplots(figsize=(8.5, 9.5))
+    fig, ax = plt.subplots(figsize=FIGSIZE)
     for idx, (feature, spread, sign) in enumerate(zip(features, spreads, signs)):
         n = 240
         feature_value = rng.uniform(0, 1, n)
@@ -112,7 +113,7 @@ def create_pd_overlap_chart(output_path: Path) -> None:
     indicator_0 = np.clip(indicator_0, -8.0, 4.5)
     indicator_1 = np.clip(indicator_1, -8.0, 4.5)
 
-    fig = plt.figure(figsize=(12, 8.5))
+    fig = plt.figure(figsize=FIGSIZE)
     gs = fig.add_gridspec(2, 2, height_ratios=[0.85, 1.65], hspace=0.42, wspace=0.28)
     ax1 = fig.add_subplot(gs[0, 0])
     ax2 = fig.add_subplot(gs[0, 1])
