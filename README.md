@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains a fully synthetic machine learning workflow for an imbalanced binary classification problem. It demonstrates cohort filtering, class-imbalance handling, gradient boosting, held-out evaluation, explainability, partial dependence analysis, and a simplified lookup scoring artifact that stakeholders can inspect.
+This repository contains a fully synthetic machine learning workflow for an imbalanced binary classification and segmentation problem inspired by early water loss analysis. It demonstrates cohort filtering, class-imbalance handling, gradient boosting, held-out evaluation, SHAP-style explainability, partial dependence analysis, and a simplified lookup scoring artifact that stakeholders can inspect.
 
 ## Business Problem
 
@@ -80,7 +80,8 @@ interpretable-imbalanced-classification/
 │   ├── evaluation.py
 │   ├── explainability.py
 │   ├── lookup_scoring.py
-│   └── visualization.py
+│   ├── visualization.py
+│   └── generate_public_portfolio_charts.py
 ├── notebooks/
 │   └── interpretable_classification_workflow.ipynb
 └── outputs/
@@ -91,7 +92,10 @@ interpretable-imbalanced-classification/
     ├── feature_importance.png
     ├── shap_summary.png
     ├── partial_dependence_top_features.png
-    └── model_vs_lookup_score.png
+    ├── model_vs_lookup_score.png
+    ├── early_water_state_problem.png
+    ├── early_water_shap_strength.png
+    └── early_water_pd_overlap.png
 ```
 
 ## How to Run
@@ -134,6 +138,7 @@ This project is built entirely with synthetic data and generic business logic. I
 
 ## Future Enhancements
 
+- Add more historical observations to improve model accuracy and reduce overlap between positive and negative PD score distributions.
 - Add calibration diagnostics.
 - Add monotonicity constraints for selected features.
 - Add cost-sensitive threshold optimization.
